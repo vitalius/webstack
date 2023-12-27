@@ -2,6 +2,7 @@ package com.softwerry.api;
 
 
 import org.hibernate.mapping.Collection;
+import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
@@ -10,15 +11,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.softwerry.repository.EmployeeRepository;
+import com.softwerry.model.Employee;
+
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
+
 
 @RestController
 @RequestMapping("/api/db")
 public class AppController {
     @Autowired
     private JdbcTemplate jdbcTemplate;
-
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     @GetMapping("hello")
     public ResponseEntity<String> sayHello() {
@@ -27,16 +32,14 @@ public class AppController {
 
     @GetMapping("select")
     public ResponseEntity<String> SelectStar() {
-        @Query("select * from employee e");
-        Collection<Employee> findAll();
+        Iterable<Employee> res = employeeRepository.findAll();
         /* 
         SqlRowSet resultSet= jdbcTemplate.queryForRowSet("select id, name, lastname, age from employee");
         while (resultSet.next()) {
             System.out.println(resultSet.getString("FirstName"));
         }
         */
-
-        return new ResponseEntity<>("OK", HttpStatus.OK);
+        return new ResponseEntity<>("OK: " + res.toString(), HttpStatus.OK);
     }
 
     @GetMapping("insert")
