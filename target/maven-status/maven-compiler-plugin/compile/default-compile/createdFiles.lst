@@ -1,0 +1,5 @@
+app/sevice/BookService.class
+app/controller/BookController.class
+app/entity/Book.class
+app/MainApplication.class
+app/repository/BookRepository.class

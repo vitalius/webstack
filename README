@@ -1,0 +1,27 @@
+Build
+
+    mvn spring-boot:run
+
+    mvn spring-boot:run -Dspring-boot.run.arguments=--spring.config.location=src/main/resources/application.properties
+
+Debug
+
+    mvn spring-boot:run -Drun.jvmArguments="-Xdebug -Dpath.to.config.dir=src/main/java/app/resources/"
+
+Create jar
+
+    mvn package
+
+    java -jar target/spring-boot-hello-world-1.0.jar
+
+    mvn clean package
+
+
+TEST
+
+    mvn test
+
+
+
+
+java -Dlogback.configurationFile=/home/vitaliy/spring/webstack/src/main/resources/logback.xml  -jar target/spring-boot-hello-world-1.0.jar
