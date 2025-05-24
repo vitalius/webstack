@@ -1,4 +1,4 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
     <property name="HOME_LOG" value="logs/app.log"/>
@@ -21,12 +21,19 @@
         </encoder>
     </appender>
 
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d %p %c [%t] %m%n</pattern>
+        </encoder>
+    </appender>
+
     <logger name="app" level="DEBUG" additivity="false">
         <appender-ref ref="FILE-ROLLING"/>
     </logger>
 
-    <root level="DEBUG">
-        <appender-ref ref="FILE-ROLLING"/>
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+        <!-- <appender-ref ref="FILE-ROLLING"/> -->
     </root>
 
 </configuration>
