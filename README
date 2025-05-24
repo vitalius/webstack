@@ -1,27 +1,27 @@
 Build
 
-    mvn spring-boot:run
+    $ mvn spring-boot:run
 
-    mvn spring-boot:run -Dspring-boot.run.arguments=--spring.config.location=src/main/resources/application.properties
+    $ mvn spring-boot:run -Dspring-boot.run.arguments=--spring.config.location=src/main/resources/application.properties
 
 Debug
 
-    mvn spring-boot:run -Drun.jvmArguments="-Xdebug -Dpath.to.config.dir=src/main/java/app/resources/"
+    $ mvn clean spring-boot:run -Dspring-boot.run.jvmArguments="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"
+
+    IntelliJ
+        - from the main menu, select Run | Edit Configurations
+        - create a new one (click add and select Remote)
+        - leave all settings at their default
 
 Create jar
 
-    mvn package
+    $ mvn package
 
-    java -jar target/spring-boot-hello-world-1.0.jar
+    $ java -jar target/spring-boot-hello-world-1.0.jar
 
-    mvn clean package
+    $ mvn clean package
 
 
 TEST
 
-    mvn test
-
-
-
-
-java -Dlogback.configurationFile=/home/vitaliy/spring/webstack/src/main/resources/logback.xml  -jar target/spring-boot-hello-world-1.0.jar
+    $ mvn test
